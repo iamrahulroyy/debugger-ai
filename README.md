@@ -1,4 +1,4 @@
-# PromptForge OS
+# OGPrompt OS
 
 A production-grade monorepo for structured prompt engineering.
 
