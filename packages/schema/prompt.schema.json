@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://promptforge.dev/schema/prompt.schema.json",
+  "$comment": "PromptForge Schema v1.0",
+  "title": "PromptSchema",
+  "description": "Universal structured prompt schema for PromptForge OS",
+  "type": "object",
+  "required": ["schemaVersion", "role", "domain", "expertiseLevel", "tone", "writingStyle", "objective"],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0",
+      "description": "Schema version for compatibility tracking"
+    },
+    "role": {
+      "type": "string",
+      "description": "The role the assistant should assume",
+      "examples": ["Software Architect", "Technical Writer", "Data Scientist", "Product Manager"]
+    },
+    "domain": {
+      "type": "string",
+      "description": "The domain or field of expertise",
+      "examples": ["Software Engineering", "Healthcare", "Finance", "Education", "Marketing"]
+    },
+    "audience": {
+      "type": "string",
+      "enum": ["SELF", "CLIENT", "STUDENT", "GENERAL", "TECHNICAL", "EXECUTIVE"],
+      "default": "GENERAL",
+      "description": "The intended audience for the response"
+    },
+    "expertiseLevel": {
+      "type": "string",
+      "enum": ["BEGINNER", "INTERMEDIATE", "ADVANCED", "EXPERT"],
+      "description": "Expertise level determining vocabulary, depth, and explanations"
+    },
+    "tone": {
+      "type": "string",
+      "enum": ["NEUTRAL", "PROFESSIONAL", "FRIENDLY", "STRICT", "CREATIVE", "PERSUASIVE"],
+      "description": "The tone to maintain throughout the response"
+    },
+    "writingStyle": {
+      "type": "string",
+      "enum": ["STEP_BY_STEP", "CONCISE", "DETAILED", "STORY_DRIVEN", "ANALYTICAL"],
+      "description": "The writing style structure for the response"
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Clear and specific primary task definition"
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Mandatory constraints that override creativity and tone",
+      "examples": [["No code blocks", "Maximum 500 words", "Use British English"]]
+    },
+    "outputFormat": {
+      "type": "object",
+      "properties": {
+        "useHeadings": {
+          "type": "boolean",
+          "default": true
+        },
+        "useLists": {
+          "type": "boolean",
+          "default": true
+        },
+        "useCodeBlocks": {
+          "type": "boolean",
+          "default": false
+        },
+        "allowEmojis": {
+          "type": "boolean",
+          "default": false
+        },
+        "maxLength": {
+          "type": "integer",
+          "minimum": 50,
+          "description": "Maximum response length in words"
+        }
+      },
+      "description": "Output formatting requirements"
+    },
+    "context": {
+      "type": "string",
+      "description": "Additional context or background information"
+    }
+  },
+  "additionalProperties": false
+}

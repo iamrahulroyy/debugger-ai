@@ -1,0 +1,19 @@
+{
+    "name": "promptforge-os",
+    "version": "1.0.0",
+    "private": true,
+    "description": "PromptForge OS - Structured Prompt Engineering Monorepo",
+    "scripts": {
+        "dev:api": "cd apps/api && uvicorn app.main:app --reload",
+        "dev:web": "cd apps/web && pnpm dev",
+        "build:extension": "cd apps/extension && pnpm build",
+        "generate": "cd packages/schema && pnpm generate"
+    },
+    "devDependencies": {
+        "typescript": "^5.3.0"
+    },
+    "engines": {
+        "node": ">=18.0.0",
+        "pnpm": ">=8.0.0"
+    }
+}
